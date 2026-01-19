@@ -1,0 +1,7 @@
+{
+  "name": "SaunaCaloriesBurned",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
