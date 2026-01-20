@@ -8,8 +8,20 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'ergebnis',
+    loadChildren: () => import('./ergebnis/ergebnis.module').then( m => m.ErgebnisPageModule)
+  },
+  {
+    path: 'datenbank',
+    loadChildren: () => import('./datenbank/datenbank.module').then( m => m.DatenbankPageModule)
+  },
+  {
+    path: 'info',
+    loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
   },
 ];
 

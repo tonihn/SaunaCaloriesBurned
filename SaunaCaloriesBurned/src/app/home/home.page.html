@@ -1,24 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Sauna Kalorien Rechner
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-contect>
+<ion-content [fullscreen]="true">
 
   <ion-item>
-    <ion-label position="fixed">Vorname:</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-label>Minuten</ion-label>
+    <ion-input clearInput placeHolder = " min" type = "number" [(ngModel)] = "eingabeMinuten"></ion-input>
   </ion-item>
 
   &nbsp;
 
-  <ion-button expand="block">Begrüße mich</ion-button>
-  &nbsp; 
-  <ion-button expand="block">Löschen</ion-button>
+  <ion-item>
+    <ion-label>Saunakalorien</ion-label>
+    <ion-input clearInput placeHolder = " kcal" type = "number" [(ngModel)] = "eingabeKalorien"></ion-input>
+  </ion-item>
 
-</ion-contect>
+  &nbsp;
+
+  <ion-button expand="block" (click)="onBerechnenButton()">Berechnen</ion-button>
+  &nbsp; 
+  <ion-button expand="block" (click)="onLoeschButton()">Löschen</ion-button>
+
+</ion-content>
 
 
