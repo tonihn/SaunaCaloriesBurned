@@ -8,33 +8,32 @@ export class SpeicherService {
 
   constructor() { }
 
-  async speichereErgebnis(minuten: number, kalorien: number): Promise<void> {
+  speichereErgebnis(minuten: number, kalorien: number, gewichtsverlust?: number): void {
     const ergebnisse = this.getAlleEintraege();
-    (await ergebnisse).push({
+    
+    ergebnisse.push({
+      id: Date.now().toString(),
       minuten: minuten,
       kalorien: kalorien,
+      gewichtsverlust: gewichtsverlust || 0,
       datum: new Date().toLocaleString()
     });
+    
     localStorage.setItem(this.storageKey, JSON.stringify(ergebnisse));
   }
 
-  async getAlleEintraege(): Promise<any[]> {
+  getAlleEintraege(): any[] {
     const data = localStorage.getItem(this.storageKey);
     return data ? JSON.parse(data) : [];
   }
 
-  async getAnzahlEintraege(): Promise<number> {
-    const eintraege = await this.getAlleEintraege();
-    return eintraege.length;
+  loescheEintrag(id: string): void {
+    let ergebnisse = this.getAlleEintraege();
+    ergebnisse = ergebnisse.filter((e: any) => e.id !== id);
+    localStorage.setItem(this.storageKey, JSON.stringify(ergebnisse));
   }
 
   loescheAlleEintraege(): void {
     localStorage.removeItem(this.storageKey);
-  }
-
-  loescheEintrag(id: string): void {
-    let ergebnisse = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
-    ergebnisse = ergebnisse.filter((e: any) => e.id !== id);
-    localStorage.setItem(this.storageKey, JSON.stringify(ergebnisse));
   }
 }

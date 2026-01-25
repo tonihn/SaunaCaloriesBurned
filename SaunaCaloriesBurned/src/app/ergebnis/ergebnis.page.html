@@ -7,28 +7,43 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Ergebnis</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-content [fullscreen]="false">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Saunazeit</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="secondary">
+        <h2>{{eingabeMinuten}} Minuten</h2>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 
-<ion-content>
-  <ion-text color="secondary">
-    <h3>{{eingabeMinuten}}</h3>
-  </ion-text>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Verbrannte Kalorien</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="primary">
+        <h1>{{ergebnisKalorien}} kcal</h1>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-text color="tertiary">
-    <h4>und</h4>
-  </ion-text>
-
-  <ion-text color="primary">
-    <h1>{{eingabeMinuten}}</h1>
-  </ion-text>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Geschätzter Gewichtsverlust</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="tertiary">
+        <h2>{{gewichtsverlust}} kg</h2>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 
   &nbsp;
 
+  <ion-button expand="block" color="success" (click)="onSpeichernButton()">Speichern</ion-button>
+  <ion-button expand="block" color="primary" href="/datenbank" routerDirection="forward">Zur Datenbank</ion-button>
   <ion-button expand="block" href="/home" routerDirection="backward">Zurück</ion-button>
 </ion-content>

@@ -10,16 +10,16 @@ import { AlertController } from '@ionic/angular';
 })
 export class DatenbankPage implements OnInit {
 
-  public anzahlEintraege : Promise<number> = Promise.resolve(0);
-  public eintraege : Promise<any[]> = Promise.resolve([]);
+  public anzahlEintraege : number = 0;
+  public eintraege : any[] = [];
 
   constructor( private speicherService: SpeicherService,
               private alertCtrl: AlertController
   ) { }
 
   private holeDatenVonSpeicherService(): void{
-    this.anzahlEintraege = this.speicherService.getAnzahlEintraege();
     this.eintraege = this.speicherService.getAlleEintraege();
+    this.anzahlEintraege = this.eintraege.length;
   }
 
   async loescheEintrag(id: string): Promise<void> {
@@ -35,6 +35,27 @@ export class DatenbankPage implements OnInit {
           text: 'Löschen',
           handler: () => {
             this.speicherService.loescheEintrag(id);
+            this.holeDatenVonSpeicherService();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async onAllesLoeschenButton(): Promise<void> {
+    const alert = await this.alertCtrl.create({
+      header: 'Bestätigung',
+      message: 'Möchtest du wirklich ALLE Einträge löschen? Diese Aktion kann nicht rückgängig gemacht werden.',
+      buttons: [
+        {
+          text: 'Abbrechen',
+          role: 'cancel'
+        },
+        {
+          text: 'Alle löschen',
+          handler: () => {
+            this.speicherService.loescheAlleEintraege();
             this.holeDatenVonSpeicherService();
           }
         }

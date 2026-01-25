@@ -9,10 +9,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-item>
     <ion-label position="floating">Zeit in Minuten</ion-label>
-    <ion-input type="number" [(ngModel)]="eingabeMinuten" placeholder="z.B. 30"></ion-input>
+    <ion-input type="number" [(ngModel)]="eingabeMinuten" placeholder="z.B. 20"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Kalorien pro Stunde</ion-label>
+    <ion-input type="number" [(ngModel)]="eingabeKalorienProStunde" placeholder="z.B. 500"></ion-input>
   </ion-item>
 
   <ion-button expand="block" (click)="onBerechnenButton()">Berechnen</ion-button>

@@ -7,10 +7,69 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">info</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-content [fullscreen]="false">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Sauna Calories Burned</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Die <strong>Sauna Calories Burned</strong> App hilft dir, die Anzahl der Kalorien zu berechnen, die du während eines Saunagangs verbrennst. Sie dient zur Berechnung deines Kalorienverbrauchs basierend auf der Zeit in der Sauna und den durchschnittlichen Kalorien pro Stunde.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Hauptfunktionen</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li><strong>Kalorienberechnung</strong>: Berechne deine verbrannten Kalorien anhand deiner Saunazeit</li>
+        <li><strong>Gewichtsverlustschätzung</strong>: Erhalte eine Schätzung des möglichen Gewichtsverlusts</li>
+        <li><strong>Datenbank</strong>: Speichere und verwalte deine Saunagänge</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Default-Wert von 500 kcal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Der Default-Wert von <strong>500 Kalorien pro Stunde</strong> basiert auf wissenschaftlichen Erkenntnissen:</p>
+      <ul>
+        <li><strong>Durchschnittlicher Kalorienverbrauch</strong>: Eine Person mittlerer Größe und mittlerem Gewicht verbrennt durchschnittlich <strong>400-600 Kalorien pro Stunde</strong> in der Sauna</li>
+        <li><strong>500 kcal als Mittelwert</strong>: Dieser Wert wurde gewählt, da er einen realistischen Durchschnitt darstellt</li>
+        <li><strong>Passive Aktivität</strong>: Im Gegensatz zu aktiven Sportarten ist die Sauna eine passive Aktivität</li>
+        <li><strong>Individuell anpassbar</strong>: Du kannst den Wert nach Bedarf anpassen</li>
+      </ul>
+      <p><strong>Nicht beachtete Faktoren, die den Verbrauch beeinflussen:</strong> Körpergewicht, Alter, Geschlecht, Stoffwechsel, Saunatemperatur und Häufigkeit von Saunagängen</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Warum nicht länger als 60 Minuten?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Die Empfehlung, <strong>nicht länger als 60 Minuten</strong> in der Sauna zu sein, basiert auf medizinischen Richtlinien:</p>
+      
+      <p><strong>Gesundheitliche Gründe:</strong></p>
+      <ul>
+        <li><strong>Kreislaufbelastung</strong>: Längere Saunasessionen belasten das Herz-Kreislauf-System stärker</li>
+        <li><strong>Dehydrierung</strong>: Nach 30-45 Minuten verliert der Körper erhebliche Flüssigkeitsmengen</li>
+        <li><strong>Elektrolythaushalt</strong>: Mit dem Schweiß verlieren wir wichtige Elektrolyte</li>
+        <li><strong>Überhitzung</strong>: Nach 60 Minuten besteht das Risiko einer Überhitzung</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Formel zur Kalorienberechnung</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Kalorien = (Zeit in Minuten / 60) × Kalorien pro Stunde</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+ 

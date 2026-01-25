@@ -11,6 +11,7 @@ import { AlertController, ToastController, NavController } from '@ionic/angular'
 export class HomePage {
 
   public eingabeMinuten : string = "";
+  public eingabeKalorienProStunde : string = "";
   public ergebnisKalorien : number = 0.0;
   public ergebnis : number = 0;
 
@@ -38,26 +39,36 @@ export class HomePage {
       }
 
       let eingabeMinutenNumber : number = Number(this.eingabeMinuten);
+      let kalorienProStunde : number = this.eingabeKalorienProStunde.length > 0 ? Number(this.eingabeKalorienProStunde) : 500;
 
       if (eingabeMinutenNumber <= 0.0){
-        await this.zeigeDialog("Minuten-Wert darf nicht kleiner-gleich Null sein.");
+        await this.zeigeDialog("Minuten-Wert muss größer als Null sein.");
+        return;
+      }
+      if (eingabeMinutenNumber > 60.0){
+        await this.zeigeDialog("Minuten-Wert darf nicht größer als 60 sein.");
+        return;
+      }
+      if (kalorienProStunde <= 0.0){
+        await this.zeigeDialog("Kalorien pro Stunde müssen größer als Null sein.");
         return;
       }
 
-      // Kalorien berechnen: (Zeit in Minuten / 60) × 500
-      this.ergebnisKalorien = (eingabeMinutenNumber / 60) * 500;
+      // Kalorien berechnen: (Zeit in Minuten / 60) × Kalorien pro Stunde
+      this.ergebnisKalorien = (eingabeMinutenNumber / 60) * kalorienProStunde;
       
       // Runde auf 2 Dezimalstellen
       this.ergebnis = this.kommastellenAbschnieden(this.ergebnisKalorien, 2);
       
       // Speichern
-      this.speicherService.speichereErgebnis(eingabeMinutenNumber, this.ergebnisKalorien);
+      
       
       this.navigateToErgebnis();
   }
 
   onLoeschButton(){
     this.eingabeMinuten = "";
+    this.eingabeKalorienProStunde = "";
     this.ergebnisKalorien = 0.0;
     this.ergebnis = 0;
   }
