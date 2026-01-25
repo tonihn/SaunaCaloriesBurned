@@ -13,6 +13,7 @@ export class ErgebnisPage implements OnInit {
   public eingabeMinuten: number = 0;
   public ergebnisKalorien: number = 0;
   public gewichtsverlust: number = 0;
+  public kommentar: string = "";
 
   constructor(private activatedRoute: ActivatedRoute,
               private speicherService: SpeicherService,
@@ -33,7 +34,8 @@ export class ErgebnisPage implements OnInit {
     await this.speicherService.speichereErgebnis(
       this.eingabeMinuten,
       this.ergebnisKalorien,
-      this.gewichtsverlust
+      this.gewichtsverlust,
+      this.kommentar
     );
     
     const toast = await this.toastController.create({
@@ -42,5 +44,8 @@ export class ErgebnisPage implements OnInit {
       color: 'success'
     });
     await toast.present();
+
+    // Kommentar zurücksetzen
+    this.kommentar = "";
   }
 }

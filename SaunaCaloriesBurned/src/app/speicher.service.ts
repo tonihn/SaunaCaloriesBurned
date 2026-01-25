@@ -8,7 +8,7 @@ export class SpeicherService {
 
   constructor() { }
 
-  speichereErgebnis(minuten: number, kalorien: number, gewichtsverlust?: number): void {
+  speichereErgebnis(minuten: number, kalorien: number, gewichtsverlust?: number, kommentar?: string): void {
     const ergebnisse = this.getAlleEintraege();
     
     ergebnisse.push({
@@ -16,6 +16,7 @@ export class SpeicherService {
       minuten: minuten,
       kalorien: kalorien,
       gewichtsverlust: gewichtsverlust || 0,
+      kommentar: kommentar || "",
       datum: new Date().toLocaleString()
     });
     

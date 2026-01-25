@@ -19,13 +19,51 @@
 
   <ion-card>
     <ion-card-header>
+      <ion-card-title>Bedienung der App</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Schritt 1: Home Seite</strong></p>
+      <ul>
+        <li>Gib die <strong>Zeit in Minuten</strong> ein, die du in der Sauna verbringen möchtest (z.B. 30)</li>
+        <li>Gib die <strong>Kalorien pro Stunde</strong> ein (optional - Default ist 500 kcal)</li>
+        <li>Klicke auf <strong>"Berechnen"</strong> um dein Ergebnis zu berechnen</li>
+        <li>Mit <strong>"Löschen"</strong> kannst du alle Eingaben zurücksetzen</li>
+      </ul>
+
+      <p><strong>Schritt 2: Ergebnis Seite</strong></p>
+      <ul>
+        <li>Du siehst deine <strong>Saunazeit</strong>, <strong>verbrannte Kalorien</strong> und den <strong>geschätzten Gewichtsverlust</strong></li>
+        <li>Optional: Füge einen <strong>Kommentar</strong> hinzu (z.B. "Intensiv", "Entspannt", etc.)</li>
+        <li>Klicke <strong>"Speichern"</strong> um das Ergebnis in der Datenbank zu speichern</li>
+        <li>Mit <strong>"Zur Datenbank"</strong> gehst du direkt zu deinen gespeicherten Einträgen</li>
+        <li>Mit <strong>"Zurück"</strong> kehrst du zur Home Seite zurück</li>
+      </ul>
+
+      <p><strong>Schritt 3: Datenbank Seite</strong></p>
+      <ul>
+        <li>Sieh eine Übersicht aller deine gespeicherten Saunagänge</li>
+        <li>Jeder Eintrag zeigt: <strong>Zeit, Kalorien, Gewichtsverlust, Kommentar und Datum</strong></li>
+        <li>Um einen <strong>einzelnen Eintrag zu löschen</strong>: Nach <strong>links swipen</strong> und auf "Löschen" klicken</li>
+        <li>Mit dem Button <strong>"Alles löschen"</strong> oben rechts kannst du alle Einträge auf einmal löschen</li>
+      </ul>
+
+      <p><strong>Schritt 4: Navigation</strong></p>
+      <ul>
+        <li>Nutze das <strong>Hamburger-Menü</strong> (☰) oben links um zwischen den Seiten zu navigieren</li>
+        <li>Du hast Zugriff auf: <strong>Home, Datenbank und Info</strong></li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
       <ion-card-title>Hauptfunktionen</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ul>
         <li><strong>Kalorienberechnung</strong>: Berechne deine verbrannten Kalorien anhand deiner Saunazeit</li>
         <li><strong>Gewichtsverlustschätzung</strong>: Erhalte eine Schätzung des möglichen Gewichtsverlusts</li>
-        <li><strong>Datenbank</strong>: Speichere und verwalte deine Saunagänge</li>
+        <li><strong>Datenbank</strong>: Speichere und verwalte deine Saunagänge mit Kommentaren</li>
       </ul>
     </ion-card-content>
   </ion-card>
@@ -72,4 +110,5 @@
     </ion-card-content>
   </ion-card>
 
- 
+
+

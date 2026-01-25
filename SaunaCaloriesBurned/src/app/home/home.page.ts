@@ -39,7 +39,7 @@ export class HomePage {
       }
 
       let eingabeMinutenNumber : number = Number(this.eingabeMinuten);
-      let kalorienProStunde : number = this.eingabeKalorienProStunde.length > 0 ? Number(this.eingabeKalorienProStunde) : 500;
+      let kalorienProStunde : number = Number(this.eingabeKalorienProStunde);
 
       if (eingabeMinutenNumber <= 0.0){
         await this.zeigeDialog("Minuten-Wert muss größer als Null sein.");

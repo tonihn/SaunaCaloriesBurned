@@ -41,6 +41,19 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Kommentar (Optional)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-textarea 
+        [(ngModel)]="kommentar" 
+        placeholder="Notizen zur Sauna-Session hinzufügen..."
+        rows="4">
+      </ion-textarea>
+    </ion-card-content>
+  </ion-card>
+
   &nbsp;
 
   <ion-button expand="block" color="success" (click)="onSpeichernButton()">Speichern</ion-button>
