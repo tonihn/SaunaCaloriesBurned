@@ -10,25 +10,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-item>
-    <ion-label>Minuten</ion-label>
-    <ion-input clearInput placeHolder = " min" type = "number" [(ngModel)] = "eingabeMinuten"></ion-input>
+    <ion-label position="floating">Zeit in Minuten</ion-label>
+    <ion-input type="number" [(ngModel)]="eingabeMinuten" placeholder="z.B. 30"></ion-input>
   </ion-item>
-
-  &nbsp;
-
-  <ion-item>
-    <ion-label>Saunakalorien</ion-label>
-    <ion-input clearInput placeHolder = " kcal" type = "number" [(ngModel)] = "eingabeKalorien"></ion-input>
-  </ion-item>
-
-  &nbsp;
 
   <ion-button expand="block" (click)="onBerechnenButton()">Berechnen</ion-button>
-  &nbsp; 
-  <ion-button expand="block" (click)="onLoeschButton()">Löschen</ion-button>
-
+  <ion-button expand="block" color="danger" (click)="onLoeschButton()">Löschen</ion-button>
 </ion-content>
 
 

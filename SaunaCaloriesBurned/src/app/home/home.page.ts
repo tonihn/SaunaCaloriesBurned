@@ -11,7 +11,6 @@ import { AlertController, ToastController, NavController } from '@ionic/angular'
 export class HomePage {
 
   public eingabeMinuten : string = "";
-  public eingabeKalorien : string = "";
   public ergebnisKalorien : number = 0.0;
   public ergebnis : number = 0;
 
@@ -31,45 +30,47 @@ export class HomePage {
     const meinAlert = await this.alertController.create({header : "Fehler", message : nachricht, buttons : [ "Ok"]});
     await meinAlert.present();
   }
+
   async onBerechnenButton(){
       if (this.eingabeMinuten == null || this.eingabeMinuten.length == 0) {
-        this.zeigeDialog("Bitte Minuten-Wert eingeben!");
+        await this.zeigeDialog("Bitte Minuten-Wert eingeben!");
         return;
       }
 
-      let eingabeMinutenNumber : number = Number(this.eingabeMinuten)
+      let eingabeMinutenNumber : number = Number(this.eingabeMinuten);
+
       if (eingabeMinutenNumber <= 0.0){
         await this.zeigeDialog("Minuten-Wert darf nicht kleiner-gleich Null sein.");
         return;
       }
+
+      // Kalorien berechnen: (Zeit in Minuten / 60) × 500
+      this.ergebnisKalorien = (eingabeMinutenNumber / 60) * 500;
       
-      // Hier: Kalorien berechnen und zur Ergebnis-Seite navigieren
-      this.ergebnisKalorien = eingabeMinutenNumber * 4.5; // Beispiel: 4.5 Kalorien pro Minute
+      // Runde auf 2 Dezimalstellen
+      this.ergebnis = this.kommastellenAbschnieden(this.ergebnisKalorien, 2);
+      
+      // Speichern
+      this.speicherService.speichereErgebnis(eingabeMinutenNumber, this.ergebnisKalorien);
+      
       this.navigateToErgebnis();
   }
 
   onLoeschButton(){
     this.eingabeMinuten = "";
+    this.ergebnisKalorien = 0.0;
+    this.ergebnis = 0;
   }
 
-  kommastellenAbschnieden(zahl: number, nachkommastellen: number): number{
-    let faktor = Math.pow(10, nachkommastellen);
-    let zahlMalFaktor = zahl * faktor;
-    let zahlAbgeschnitten = 0.0;
-
-    if (zahlMalFaktor < 0){
-      zahlAbgeschnitten = Math.ceil(zahlMalFaktor);
-    }
-    else {
-      zahlAbgeschnitten = Math.floor(zahlMalFaktor);
-    }
-    return zahlAbgeschnitten / faktor;
+  kommastellenAbschnieden(zahl: number, nachkommastellen: number): number {
+    const faktor = Math.pow(10, nachkommastellen);
+    return Math.round(zahl * faktor) / faktor;
   }
-navigateToErgebnis() {
-  this.ergebnis = this.kommastellenAbschnieden(this.ergebnisKalorien, 2);
-  let navigationTarget = "/ergebnis?ergebnis=${this.ergebnis}&ergebnisKalorien=${this.ergebnisKalorien}";
-  this.navCtrl.navigateForward(navigationTarget);
-}
+
+  navigateToErgebnis() {
+    const navigationTarget = `/ergebnis?minuten=${this.eingabeMinuten}&kalorien=${this.ergebnis}`;
+    this.navCtrl.navigateForward(navigationTarget);
+  }
 }
 
 
