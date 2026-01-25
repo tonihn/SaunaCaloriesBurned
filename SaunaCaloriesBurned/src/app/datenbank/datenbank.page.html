@@ -16,4 +16,31 @@
       <ion-title size="large">datenbank</ion-title>
     </ion-toolbar>
   </ion-header>
+
 </ion-content>
+<ion-content>
+  <h2> Anzahl gespeicherter Einträge: {{ anzahlEintraege | async }}</h2>
+
+  &nbsp;
+
+  <p> Listeneintrag zum Löschen nach links ziehen.</p>
+</ion-content>
+
+<ion-list>
+  <ion-item-sliding *ngFor="let eintrag of eintraege | async">
+    <ion-item>
+      <ion-label>
+        <h2>Datum: {{ eintrag.datum }}</h2>
+        <p>Gewicht: {{ eintrag.gewicht }} kg</p>
+        <p>Dauer: {{ eintrag.dauer }} min</p>
+        <p>Kalorien: {{ eintrag.kalorien }} kcal</p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="loescheEintrag(eintrag.id)">
+        Löschen
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpeicherService } from '../speicher.service';
 import { AlertController, ToastController, NavController } from '@ionic/angular';
 
 @Component({
@@ -16,7 +17,8 @@ export class HomePage {
 
   constructor(private alertController: AlertController, 
               private toastController: ToastController,
-              private navCtrl: NavController
+              private navCtrl: NavController,
+              private speicherService: SpeicherService
   ) {}
 
   async zeigeToast(nachricht: string){
