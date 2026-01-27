@@ -15,6 +15,10 @@ export class ErgebnisPage implements OnInit {
   public gewichtsverlust: number = 0;
   public kommentar: string = "";
 
+  public eingabeMinutenDE: string = "";
+  public ergebnisKalorienDE: string = "";
+  public gewichtsverlustDE: string = "";
+
   constructor(private activatedRoute: ActivatedRoute,
               private speicherService: SpeicherService,
               private toastController: ToastController) {}
@@ -28,6 +32,14 @@ export class ErgebnisPage implements OnInit {
       this.gewichtsverlust = this.ergebnisKalorien / 7700;
       this.gewichtsverlust = Math.round(this.gewichtsverlust * 10000) / 10000; // 4 Dezimalstellen
     });
+
+    this.eingabeMinutenDE = this.zahlInDeFormat(this.eingabeMinuten, 0);
+    this.ergebnisKalorienDE = this.zahlInDeFormat(this.ergebnisKalorien, 2);
+    this.gewichtsverlustDE = this.zahlInDeFormat(this.gewichtsverlust, 4);
+  }
+
+  zahlInDeFormat(num: number, dezimalstellen: number): string {
+    return num.toFixed(dezimalstellen).replace('.', ',');
   }
 
   async onSpeichernButton() {
@@ -35,6 +47,9 @@ export class ErgebnisPage implements OnInit {
       this.eingabeMinuten,
       this.ergebnisKalorien,
       this.gewichtsverlust,
+      this.eingabeMinutenDE,
+      this.ergebnisKalorienDE,
+      this.gewichtsverlustDE,
       this.kommentar
     );
     

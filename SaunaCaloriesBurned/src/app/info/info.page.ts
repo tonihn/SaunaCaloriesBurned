@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.page.scss'],
   standalone: false,
 })
-export class InfoPage implements OnInit {
+export class InfoPage {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

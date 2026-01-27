@@ -14,7 +14,8 @@
     </ion-card-header>
     <ion-card-content>
       <ion-text color="secondary">
-        <h2>{{eingabeMinuten}} Minuten</h2>
+        <h2>{{eingabeMinutenDE}} Minuten</h2>
+
       </ion-text>
     </ion-card-content>
   </ion-card>
@@ -25,7 +26,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-text color="primary">
-        <h1>{{ergebnisKalorien}} kcal</h1>
+        <h1>{{ergebnisKalorienDE}} kcal</h1>
       </ion-text>
     </ion-card-content>
   </ion-card>
@@ -36,7 +37,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-text color="tertiary">
-        <h2>{{gewichtsverlust}} kg</h2>
+        <h2>{{gewichtsverlustDE}} kg</h2>
       </ion-text>
     </ion-card-content>
   </ion-card>
@@ -49,7 +50,8 @@
       <ion-textarea 
         [(ngModel)]="kommentar" 
         placeholder="Notizen zur Sauna-Session hinzufügen..."
-        rows="4">
+        rows="4"
+        maxlength="50">
       </ion-textarea>
     </ion-card-content>
   </ion-card>
@@ -60,3 +62,4 @@
   <ion-button expand="block" color="primary" href="/datenbank" routerDirection="forward">Zur Datenbank</ion-button>
   <ion-button expand="block" href="/home" routerDirection="backward">Zurück</ion-button>
 </ion-content>
+

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpeicherService } from '../speicher.service';
+
 import { AlertController, ToastController, NavController } from '@ionic/angular';
 
 @Component({
@@ -17,8 +17,7 @@ export class HomePage {
 
   constructor(private alertController: AlertController, 
               private toastController: ToastController,
-              private navCtrl: NavController,
-              private speicherService: SpeicherService
+              private navCtrl: NavController
   ) {}
 
   async zeigeToast(nachricht: string){
@@ -36,10 +35,19 @@ export class HomePage {
       if (this.eingabeMinuten == null || this.eingabeMinuten.length == 0) {
         await this.zeigeDialog("Bitte Minuten-Wert eingeben!");
         return;
+      } 
+      if (this.eingabeKalorienProStunde == null || this.eingabeKalorienProStunde.length == 0) {
+        await this.zeigeDialog("Bitte Kalorien pro Stunde eingeben!");
+        return;
       }
 
       let eingabeMinutenNumber : number = Number(this.eingabeMinuten);
       let kalorienProStunde : number = Number(this.eingabeKalorienProStunde);
+
+      this.eingabeMinuten = this.kommastellenAbschneiden(eingabeMinutenNumber, 2).toString();
+      this.eingabeKalorienProStunde = this.kommastellenAbschneiden(kalorienProStunde, 2).toString();
+
+      // Validierungen
 
       if (eingabeMinutenNumber <= 0.0){
         await this.zeigeDialog("Minuten-Wert muss größer als Null sein.");
@@ -49,8 +57,12 @@ export class HomePage {
         await this.zeigeDialog("Minuten-Wert darf nicht größer als 60 sein.");
         return;
       }
-      if (kalorienProStunde <= 0.0){
-        await this.zeigeDialog("Kalorien pro Stunde müssen größer als Null sein.");
+      if (kalorienProStunde < 400.0){
+        await this.zeigeDialog("Kalorien pro Stunde müssen größer als 400 sein.");
+        return;
+      }
+      if (kalorienProStunde > 600.0){
+        await this.zeigeDialog("Kalorien pro Stunde dürfen nicht größer als 600 sein.");
         return;
       }
 
@@ -58,9 +70,7 @@ export class HomePage {
       this.ergebnisKalorien = (eingabeMinutenNumber / 60) * kalorienProStunde;
       
       // Runde auf 2 Dezimalstellen
-      this.ergebnis = this.kommastellenAbschnieden(this.ergebnisKalorien, 2);
-      
-      // Speichern
+      this.ergebnis = this.kommastellenAbschneiden(this.ergebnisKalorien, 2);
       
       
       this.navigateToErgebnis();
@@ -73,7 +83,7 @@ export class HomePage {
     this.ergebnis = 0;
   }
 
-  kommastellenAbschnieden(zahl: number, nachkommastellen: number): number {
+  kommastellenAbschneiden(zahl: number, nachkommastellen: number): number {
     const faktor = Math.pow(10, nachkommastellen);
     return Math.round(zahl * faktor) / faktor;
   }

@@ -15,20 +15,18 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <h2 style="color: white; font-size: 1.6em;">Anzahl gespeicherter Einträge: {{ anzahlEintraege }}</h2>
-      <p style="color: white; font-size: 1.1em; margin-top: 10px;">
-        Zum Löschen eines Eintrags nach links swipen.
-      </p>
+      <h2  class="ueberschrift">Anzahl gespeicherter Einträge: {{ anzahlEintraege | async }}</h2>
+      <p class="info"> Zum Löschen eines Eintrags nach links swipen.</p>
     </ion-card-content>
   </ion-card>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let eintrag of eintraege">
+    <ion-item-sliding *ngFor="let eintrag of eintraege | async" #slidingItem>
       <ion-item>
         <ion-label>
-          <p>Zeit: {{ eintrag.minuten }} min</p>
-          <p>Kalorien: {{ eintrag.kalorien }} kcal</p>
-          <p>Gewichtsverlust: {{ eintrag.gewichtsverlust }} kg</p>
+          <p>Zeit: {{ eintrag.minutenDE }} min</p>
+          <p>Kalorien: {{ eintrag.kalorienDE }} kcal</p>
+          <p>Gewichtsverlust: {{ eintrag.gewichtsverlustDE }} kg</p>
           <p>Datum: {{ eintrag.datum }}</p>
           <p>Kommentar: {{ eintrag.kommentar }}</p>
         </ion-label>
